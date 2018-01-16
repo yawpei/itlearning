@@ -1,0 +1,33 @@
+spring:
+    profiles:
+        active: @spring.profiles.active@
+    application:
+        name:
+    jackson:
+        serialization.write_dates_as_timestamps: false
+        deserialization.FAIL_ON_UNKNOWN_PROPERTIES: off
+    messages:
+        basename: i18n/messages
+    datasource:
+        driver-class-name: @datasource.driver@
+        url: @datasource.url@
+        username: @datasource.username@
+        password: @datasource.password@
+        test-while-idle: true
+        max-wait-millis: 30000
+        validation-query: 'SELECT 1'
+        time-between-eviction-runs-millis: 20000
+        min-evictable-idle-time-millis: 28700
+    jpa:
+        database-platform: @datasource.dialect@
+        hibernate:
+        ddl-auto: @datasource.jpa.hibernate.ddl-auto@
+        show-sql: @datasource.jpa.show-sql@
+        filters: log4j,wall,mergeStat
+
+server:
+    port: @server.port@
+    contextPath: @server.contextpath@
+
+
+
