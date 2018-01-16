@@ -20,7 +20,6 @@ spring:
         min-evictable-idle-time-millis: 28700
     jpa:
         database-platform: @datasource.dialect@
-        hibernate:
         ddl-auto: @datasource.jpa.hibernate.ddl-auto@
         show-sql: @datasource.jpa.show-sql@
         filters: log4j,wall,mergeStat
