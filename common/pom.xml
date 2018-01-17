@@ -97,8 +97,6 @@
             <artifactId>druid</artifactId>
             <version>${druid.version}</version>
         </dependency>
-
-
 <!--spring boot-->
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -197,6 +195,11 @@
             <groupId>com.alibaba</groupId>
             <artifactId>fastjson</artifactId>
             <version>${fastjson.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.github.penggle</groupId>
+            <artifactId>kaptcha</artifactId>
+            <version>${kaptcha.version}</version>
         </dependency>
     </dependencies>
 

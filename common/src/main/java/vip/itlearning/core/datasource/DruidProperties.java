@@ -1,5 +1,4 @@
-package vip.itlearning.common.config;
-
+package vip.itlearning.core.datasource;
 
 import com.alibaba.druid.pool.DruidDataSource;
 import org.slf4j.Logger;
@@ -19,8 +18,8 @@ import java.sql.SQLException;
  * @date 2018/1/17 17:02
  */
 @Configuration
-public class DruidDBConfig {
-    private Logger logger = LoggerFactory.getLogger(DruidDBConfig.class);
+public class DruidProperties {
+    private Logger logger = LoggerFactory.getLogger(DruidProperties.class);
 
     @Value("${spring.datasource.url}")
     private String dbUrl;
@@ -31,7 +30,7 @@ public class DruidDBConfig {
     @Value("${spring.datasource.password}")
     private String password;
 
-    @Value("${spring.datasource.driverClassName}")
+    @Value("${spring.datasource.driver-class-name}")
     private String driverClassName;
 
     @Value("${spring.datasource.initialSize}")
