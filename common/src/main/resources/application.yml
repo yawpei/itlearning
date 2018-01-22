@@ -60,7 +60,8 @@ spring:
         useGlobalDataSourceStat: true
     jpa:
         database-platform: @datasource.dialect@
-        ddl-auto: @datasource.jpa.hibernate.ddl-auto@
+        hibernate:
+            ddl-auto: @datasource.jpa.hibernate.ddl-auto@
         show-sql: @datasource.jpa.show-sql@
         filters: log4j,wall,mergeStat
     springfox.documentation.swagger.v2.path: /api-docs

@@ -5,6 +5,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+import vip.itlearning.model.system.Dept;
+import vip.itlearning.model.system.User;
 
 /**
  * Created by Administrator on 2018/1/17.
@@ -19,7 +21,6 @@ public class TestController {
     @RequestMapping(value = "/city", method = RequestMethod.GET)
     public void  getCityByState(
             @ApiParam(value = "The id of the city" ,required=true ) @RequestParam String state){
-
         return;
     }
 
