@@ -1,16 +1,19 @@
 package vip.itlearning.model.system;
 
-import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 import vip.itlearning.model.jpa.BaseEntity;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
+import javax.persistence.*;
+import java.util.HashSet;
+import java.util.Set;
 
 /**
  * @author yaw
  * @date 2018/1/22 15:54
  */
-@Data
+@Setter
+@Getter
 @Entity
 public class Role extends BaseEntity {
 
@@ -30,4 +33,11 @@ public class Role extends BaseEntity {
      * 部门名称
      */
     private Integer deptid;
+
+    @ManyToMany(mappedBy ="uroles")
+    private Set<User> rusers = new HashSet<User>();
+
+    @JoinTable(name = "role_menu", joinColumns = {@JoinColumn(name = "role_id", referencedColumnName = "id")}, inverseJoinColumns = {@JoinColumn(name = "menu_id", referencedColumnName = "id")})
+    @ManyToMany
+    private Set<Menu> rmenus = new HashSet<Menu>();
 }

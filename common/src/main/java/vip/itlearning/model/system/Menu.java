@@ -1,10 +1,15 @@
 package vip.itlearning.model.system;
 
-import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 import org.hibernate.validator.constraints.NotBlank;
 import vip.itlearning.model.jpa.BaseEntity;
 
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.ManyToMany;
+import java.util.HashSet;
+import java.util.Set;
 
 /**
  * 菜单
@@ -12,7 +17,8 @@ import javax.persistence.Entity;
  * @author yaw
  * @date 2018/1/22 16:40
  */
-@Data
+@Setter
+@Getter
 @Entity
 public class Menu extends BaseEntity {
     /**
@@ -65,6 +71,12 @@ public class Menu extends BaseEntity {
      * 是否打开:    1:打开   0:不打开
      */
     private Integer isopen;
+
+    /**
+     * 菜单角色关联
+     */
+    @ManyToMany(mappedBy = "rmenus")
+    private Set<Role> mroles = new HashSet<Role>();
 
     @Override
     public String toString() {

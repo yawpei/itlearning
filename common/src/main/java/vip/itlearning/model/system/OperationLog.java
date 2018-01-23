@@ -1,6 +1,7 @@
 package vip.itlearning.model.system;
 
-import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 import vip.itlearning.model.jpa.BaseEntity;
 
 import javax.persistence.Entity;
@@ -14,7 +15,8 @@ import java.util.Date;
  * @author yaw
  * @date 2018/1/22 15:54
  */
-@Data
+@Setter
+@Getter
 @Entity
 public class OperationLog extends BaseEntity {
 

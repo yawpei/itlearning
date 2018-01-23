@@ -1,11 +1,14 @@
 package vip.itlearning.model.system;
 
-import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 import vip.itlearning.model.jpa.BaseEntity;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
+import javax.persistence.*;
 import java.util.Date;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
 
 /**
  * 用戶
@@ -13,14 +16,14 @@ import java.util.Date;
  * @author yaw
  * @date 2018/1/22 14:42
  */
-@Data
+@Setter
+@Getter
 @Entity
 public class User extends BaseEntity {
 
     /**
      * 账号
      */
-    @Column
     private String account;
 
     /**
@@ -32,7 +35,6 @@ public class User extends BaseEntity {
     /**
      * md5密码盐
      */
-    @Column
     private String salt;
 
     /**
@@ -50,41 +52,39 @@ public class User extends BaseEntity {
     /**
      * 性别（1：男 2：女）
      */
-    @Column
     private Integer sex;
 
     /**
      * 电子邮件
      */
-    @Column
     private String email;
 
     /**
      * 电话
      */
-    @Column
     private String phone;
 
     /**
      * 部门id
      */
-    @Column
     private Integer deptid;
 
     /**
      * 状态(1：启用  2：冻结  3：删除）
      */
-    @Column
     private Integer status;
 
     /**
      * 签名
      */
-    @Column(length = 65535,columnDefinition="Text")
+    @Column(length = 65535, columnDefinition = "Text")
     private String introduction;
 
     /**
      * 角色
      */
-    private String roleid;
+    @JoinTable(name = "user_role", joinColumns = {@JoinColumn(name = "user_id", referencedColumnName = "id")}, inverseJoinColumns = {@JoinColumn(name = "role_id", referencedColumnName = "id")})
+    @ManyToMany
+    private Set<Role> uroles = new HashSet<Role>();
+
 }

@@ -1,6 +1,7 @@
 package vip.itlearning.model.system;
 
-import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 import vip.itlearning.model.jpa.BaseEntity;
 
 import javax.persistence.Entity;
@@ -13,7 +14,8 @@ import javax.persistence.Entity;
  * @author yaw
  * @date 2018/1/22 16:40
  */
-@Data
+@Setter
+@Getter
 @Entity
 public class Dict extends BaseEntity {
 
