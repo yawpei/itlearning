@@ -87,4 +87,11 @@ public class User extends BaseEntity {
     @ManyToMany
     private Set<Role> uroles = new HashSet<Role>();
 
+    /**
+     * 密码盐.
+     * @return
+     */
+    public String getCredentialsSalt(){
+        return this.username+this.salt;
+    }
 }

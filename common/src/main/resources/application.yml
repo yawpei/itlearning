@@ -59,12 +59,22 @@ spring:
         # 合并多个DruidDataSource的监控数据
         useGlobalDataSourceStat: true
     jpa:
+#      properties:
+#             hibernate:
+#                dialect: org.hibernate.dialect.MySQL5Dialect
         database-platform: @datasource.dialect@
         hibernate:
             ddl-auto: @datasource.jpa.hibernate.ddl-auto@
+            naming:
+               strategy: org.hibernate.cfg.DefaultComponentSafeNamingStrategy
         show-sql: @datasource.jpa.show-sql@
         filters: log4j,wall,mergeStat
+    # SWAGGER UI
     springfox.documentation.swagger.v2.path: /api-docs
+    # 去掉html的校验
+    thymeleaf:
+           cache: false
+           mode: LEGACYHTML5
 
 
 

@@ -1,6 +1,5 @@
 package vip.itlearning.node;
 
-import com.stylefeng.guns.core.constant.IsMenu;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -255,9 +254,9 @@ public class MenuNode implements Comparable {
     public static List<MenuNode> clearBtn(List<MenuNode> nodes) {
         ArrayList<MenuNode> noBtns = new ArrayList<MenuNode>();
         for (MenuNode node : nodes) {
-            if(node.getIsmenu() == IsMenu.YES.getCode()){
-                noBtns.add(node);
-            }
+//            if(node.getIsmenu() == IsMenu.YES.getCode()){
+//                noBtns.add(node);
+//            }
         }
         return noBtns;
     }

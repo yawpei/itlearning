@@ -1,4 +1,4 @@
-package vip.itlearning.dto.result;
+package vip.itlearning.web.result;
 
 import io.swagger.annotations.ApiModelProperty;
 import org.springframework.data.domain.Page;

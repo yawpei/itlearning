@@ -5,10 +5,13 @@ import lombok.Setter;
 import org.hibernate.validator.constraints.NotBlank;
 import vip.itlearning.model.jpa.BaseEntity;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.ManyToMany;
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 /**
@@ -43,7 +46,7 @@ public class Menu extends BaseEntity {
      */
     private String icon;
     /**
-     * url地址
+     * 资源路径
      */
     @NotBlank
     private String url;
@@ -67,6 +70,17 @@ public class Menu extends BaseEntity {
      * 菜单状态 :  1:启用   0:不启用
      */
     private Integer status;
+
+    /**
+     * 资源类型，[menu|button]
+     */
+    @Column(columnDefinition="enum('menu','button')")
+    private String resourceType;
+
+    /**
+     * 权限字符串,menu例子：role:*，button例子：role:create,role:update,role:delete,role:view
+     */
+    private String permission;
     /**
      * 是否打开:    1:打开   0:不打开
      */
@@ -76,7 +90,7 @@ public class Menu extends BaseEntity {
      * 菜单角色关联
      */
     @ManyToMany(mappedBy = "rmenus")
-    private Set<Role> mroles = new HashSet<Role>();
+    private List<Role> mroles = new ArrayList<Role>();
 
     @Override
     public String toString() {

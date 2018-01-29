@@ -1,6 +1,7 @@
 package vip.itlearning.exception;
 
-import vip.itlearning.dto.result.ResultError;
+
+import vip.itlearning.web.result.ResultError;
 
 /**
  * @author yaw
