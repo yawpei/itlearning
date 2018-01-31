@@ -4,6 +4,8 @@
 
 ###################  itlearning配置  ###################
 itlearning:
+  artifactId: @artifactId@
+  version: @version@
   swagger-open: true #是否开启swagger (true/false)
   kaptcha-open: false #是否开启登录时验证码 (true/false)
   session-open: false #是否开启session超时验证（受影响的类SessionTimeoutInterceptor） (true/false)
