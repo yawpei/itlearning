@@ -10,10 +10,10 @@ import java.util.Map;
 
 @Controller
 public class HomeController {
-   /* @RequestMapping({"/","/index"})
+    @RequestMapping({"/","/index"})
     public String index(){
-        return"/index";
-    }*/
+        return"index";
+    }
 
     @RequestMapping("/login")
     public String login(HttpServletRequest request, Map<String, Object> map) throws Exception{
@@ -40,7 +40,7 @@ public class HomeController {
         }
         map.put("msg", msg);
         // 此方法不处理登录成功,由shiro进行处理
-        return "/login";
+        return "login";
     }
 
     @RequestMapping("/403")

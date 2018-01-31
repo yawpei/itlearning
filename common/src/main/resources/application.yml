@@ -75,7 +75,11 @@ spring:
     thymeleaf:
            cache: false
            mode: LEGACYHTML5
-
+    mvc:
+       static-path-pattern: /static/**
+       view:
+          prefix: /WEB-INF/view
+          suffix: .html
 
 
 
