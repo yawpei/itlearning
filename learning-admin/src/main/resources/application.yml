@@ -95,7 +95,12 @@ spring:
     password: 123456
     db-name: itlearning_common
     filters: log4j,wall,mergeStat
-
+#shiro拦截配置
+shiroFilter:
+  filterChainDefinitionMap:
+      /static/**: anon
+      /logout: logout
+      /**: authc
 #flowable数据源和多数据源配置
 itlearning:
   flowable:
@@ -131,5 +136,5 @@ spring:
 logging:
   level.root: warn
   path: logs/
-  file: itlearning.log
+  file: itlearning1.log
 
