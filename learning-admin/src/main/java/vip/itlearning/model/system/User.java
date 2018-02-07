@@ -2,6 +2,7 @@ package vip.itlearning.model.system;
 
 import lombok.Getter;
 import lombok.Setter;
+import vip.itlearning.common.enums.Status;
 import vip.itlearning.model.jpa.BaseEntity;
 
 import javax.persistence.*;
@@ -71,7 +72,7 @@ public class User extends BaseEntity {
     /**
      * 状态(1：启用  2：冻结  3：删除）
      */
-    private Integer status;
+    private Status status = Status.OPEN;
 
     /**
      * 签名

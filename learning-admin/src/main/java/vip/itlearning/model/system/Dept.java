@@ -19,7 +19,7 @@ import javax.persistence.Entity;
 public class Dept extends BaseEntity {
 
     /**
-     * 排序
+     * 显示顺序
      */
     private Integer num;
     /**
@@ -42,6 +42,11 @@ public class Dept extends BaseEntity {
      * 提示
      */
     private String tips;
+
+    /**
+     * 是否可用
+     */
+    private boolean available;
 
     @Override
     public String toString() {

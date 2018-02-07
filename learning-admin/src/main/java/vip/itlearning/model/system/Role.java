@@ -27,9 +27,9 @@ public class Role extends BaseEntity {
      */
     private Integer pid;
     /**
-     * 角色名称
+     * 角色名称（标识符）
      */
-    private String name;
+    private String role;
     /**
      * 别名
      */
@@ -39,10 +39,15 @@ public class Role extends BaseEntity {
      */
     private Integer deptid;
 
+    /**
+     * 是否可用
+     */
+    private boolean available;
+
     @ManyToMany(mappedBy ="uroles")
     private Set<User> rusers = new HashSet<User>();
 
     @JoinTable(name = "role_menu", joinColumns = {@JoinColumn(name = "role_id", referencedColumnName = "id")}, inverseJoinColumns = {@JoinColumn(name = "menu_id", referencedColumnName = "id")})
     @ManyToMany
-    private Set<Menu> rmenus = new HashSet<Menu>();
+    private Set<Resource> rmenus = new HashSet<Resource>();
 }

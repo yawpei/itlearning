@@ -3,9 +3,9 @@ package vip.itlearning.model.system;
 import lombok.Getter;
 import lombok.Setter;
 import org.hibernate.validator.constraints.NotBlank;
+import vip.itlearning.common.enums.ResourceType;
 import vip.itlearning.model.jpa.BaseEntity;
 
-import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.ManyToMany;
 import java.util.ArrayList;
@@ -20,7 +20,7 @@ import java.util.List;
 @Setter
 @Getter
 @Entity
-public class Menu extends BaseEntity {
+public class Resource extends BaseEntity {
     /**
      * 菜单编号
      */
@@ -56,23 +56,18 @@ public class Menu extends BaseEntity {
      */
     private Integer levels;
     /**
-     * 是否是菜单（1：是  0：不是）
-     */
-    private Integer ismenu;
-    /**
-     * 备注
+     * 提示
      */
     private String tips;
     /**
-     * 菜单状态 :  1:启用   0:不启用
+     * 菜单状态 :  open:启用   close:不启用
      */
-    private Integer status;
+    private boolean available;
 
     /**
      * 资源类型，[menu|button]
      */
-    @Column(columnDefinition="enum('menu','button')")
-    private String resourceType;
+    private ResourceType resourceType = ResourceType.menu;
 
     /**
      * 权限字符串,menu例子：role:*，button例子：role:create,role:update,role:delete,role:view
@@ -91,7 +86,7 @@ public class Menu extends BaseEntity {
 
     @Override
     public String toString() {
-        return "Menu{" +
+        return "Resource{" +
                 "id=" + getId() +
                 ", code=" + code +
                 ", pcode=" + pcode +
@@ -101,9 +96,8 @@ public class Menu extends BaseEntity {
                 ", url=" + url +
                 ", num=" + num +
                 ", levels=" + levels +
-                ", ismenu=" + ismenu +
                 ", tips=" + tips +
-                ", status=" + status +
+                ", type=" + resourceType +
                 ", isopen=" + isopen +
                 "}";
     }

@@ -1,35 +1,34 @@
 package vip.itlearning.config.shiro;
 
-import org.apache.shiro.authc.AuthenticationException;
-import org.apache.shiro.authc.AuthenticationInfo;
-import org.apache.shiro.authc.AuthenticationToken;
-import org.apache.shiro.authc.SimpleAuthenticationInfo;
+import org.apache.shiro.authc.*;
 import org.apache.shiro.authz.AuthorizationInfo;
 import org.apache.shiro.authz.SimpleAuthorizationInfo;
 import org.apache.shiro.realm.AuthorizingRealm;
 import org.apache.shiro.subject.PrincipalCollection;
 import org.apache.shiro.util.ByteSource;
-import vip.itlearning.model.system.Menu;
-import vip.itlearning.model.system.Role;
+import org.springframework.beans.factory.annotation.Autowired;
 import vip.itlearning.model.system.User;
 import vip.itlearning.service.UserService;
 
-import javax.annotation.Resource;
+import java.util.HashSet;
+import java.util.Set;
 
 public class MyShiroRealm extends AuthorizingRealm {
-    @Resource
+    @Autowired
     private UserService userInfoService;
+
+    public MyShiroRealm() {
+    }
+
     @Override
     protected AuthorizationInfo doGetAuthorizationInfo(PrincipalCollection principals) {
         System.out.println("权限配置-->MyShiroRealm.doGetAuthorizationInfo()");
         SimpleAuthorizationInfo authorizationInfo = new SimpleAuthorizationInfo();
         User userInfo  = (User)principals.getPrimaryPrincipal();
-        for(Role role:userInfo.getUroles()){
-            authorizationInfo.addRole(role.getName());
-            for(Menu p:role.getRmenus()){
-                authorizationInfo.addStringPermission(p.getPermission());
-            }
-        }
+        Set roles = new HashSet(userInfo.getUroles());
+        Set permissions = new HashSet(userInfoService.findPermissions(userInfo.getUsername()));
+        authorizationInfo.setRoles(roles);
+        authorizationInfo.setStringPermissions(permissions);
         return authorizationInfo;
     }
 
@@ -38,6 +37,7 @@ public class MyShiroRealm extends AuthorizingRealm {
     protected AuthenticationInfo doGetAuthenticationInfo(AuthenticationToken token)
             throws AuthenticationException {
         System.out.println("MyShiroRealm.doGetAuthenticationInfo()");
+        UsernamePasswordToken upToken = (UsernamePasswordToken) token;
         //获取用户的输入的账号.
         String username = (String)token.getPrincipal();
         System.out.println(token.getCredentials());
