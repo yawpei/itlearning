@@ -103,13 +103,13 @@ shiroFilter:
       /**: authc
 #flowable数据源和多数据源配置
 itlearning:
-  flowable:
-    datasource:
-      url: jdbc:mysql://127.0.0.1:3306/guns_flowable?autoReconnect=true&useUnicode=true&characterEncoding=utf8&zeroDateTimeBehavior=convertToNull&useSSL=false
-      username: root
-      password: 123456
+#  flowable:
+#    datasource:
+#     url: jdbc:mysql://127.0.0.1:3306/guns_flowable?autoReconnect=true&useUnicode=true&characterEncoding=utf8&zeroDateTimeBehavior=convertToNull&useSSL=false
+ #     username: root
+ #     password: 123456
   muti-datasource:
-    default-dataSource-name: dataSourceGuns #默认的数据源名称
+    default-dataSource-name: dataSourceItlearning #默认的数据源名称
     url: jdbc:mysql://127.0.0.1:3306/guns_flowable?autoReconnect=true&useUnicode=true&characterEncoding=utf8&zeroDateTimeBehavior=convertToNull&useSSL=false
     username: root
     password: 123456

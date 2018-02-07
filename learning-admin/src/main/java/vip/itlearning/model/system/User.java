@@ -6,9 +6,7 @@ import vip.itlearning.common.enums.Status;
 import vip.itlearning.model.jpa.BaseEntity;
 
 import javax.persistence.*;
-import java.util.Date;
-import java.util.HashSet;
-import java.util.Set;
+import java.util.*;
 
 /**
  * 用戶
@@ -22,9 +20,15 @@ import java.util.Set;
 public class User extends BaseEntity {
 
     /**
-     * 账号
+     * 用户名
      */
-    private String account;
+    @Column(nullable = false, unique = true)
+    private String username;
+
+    /**
+     * 名字
+     */
+    private String realname;
 
     /**
      * 密码
@@ -36,12 +40,6 @@ public class User extends BaseEntity {
      * md5密码盐
      */
     private String salt;
-
-    /**
-     * 用户名
-     */
-    @Column(nullable = false, unique = true)
-    private String username;
 
     /**
      * 生日
@@ -67,25 +65,24 @@ public class User extends BaseEntity {
     /**
      * 部门id
      */
-    private Integer deptid;
+    private Long deptid;
 
     /**
      * 状态(1：启用  2：冻结  3：删除）
      */
-    private Status status = Status.OPEN;
+    private Status status = Status.OK;
 
-    /**
-     * 签名
-     */
+/*
+     签名
     @Column(length = 65535, columnDefinition = "Text")
-    private String introduction;
+    private String introduction;*/
 
     /**
      * 角色
      */
     @JoinTable(name = "user_role", joinColumns = {@JoinColumn(name = "user_id", referencedColumnName = "id")}, inverseJoinColumns = {@JoinColumn(name = "role_id", referencedColumnName = "id")})
     @ManyToMany
-    private Set<Role> uroles = new HashSet<Role>();
+    private List<Role> uroles = new ArrayList<>();
 
     /**
      * 密码盐.

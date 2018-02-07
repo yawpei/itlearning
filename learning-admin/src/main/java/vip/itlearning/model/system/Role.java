@@ -8,7 +8,9 @@ import javax.persistence.Entity;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 /**
@@ -27,15 +29,15 @@ public class Role extends BaseEntity {
      */
     private Integer pid;
     /**
-     * 角色名称（标识符）
+     * 角色名称
      */
-    private String role;
+    private String name;
     /**
-     * 别名
+     * 别名（标识符）
      */
     private String tips;
     /**
-     * 部门名称
+     * 部门Id
      */
     private Integer deptid;
 
@@ -45,9 +47,9 @@ public class Role extends BaseEntity {
     private boolean available;
 
     @ManyToMany(mappedBy ="uroles")
-    private Set<User> rusers = new HashSet<User>();
+    private List<User> rusers = new ArrayList<>();
 
-    @JoinTable(name = "role_menu", joinColumns = {@JoinColumn(name = "role_id", referencedColumnName = "id")}, inverseJoinColumns = {@JoinColumn(name = "menu_id", referencedColumnName = "id")})
+    @JoinTable(name = "role_resource", joinColumns = {@JoinColumn(name = "role_id", referencedColumnName = "id")}, inverseJoinColumns = {@JoinColumn(name = "resource_id", referencedColumnName = "id")})
     @ManyToMany
-    private Set<Resource> rmenus = new HashSet<Resource>();
+    private List<Resource> rresource = new ArrayList<Resource>();
 }

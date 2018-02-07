@@ -1,4 +1,4 @@
-package vip.itlearning.repository.system;
+package vip.itlearning.repository.base;
 
 import com.querydsl.core.types.EntityPath;
 import com.querydsl.core.types.OrderSpecifier;

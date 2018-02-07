@@ -1,4 +1,4 @@
-package vip.itlearning.repository.system;
+package vip.itlearning.repository.base;
 
 import java.util.Collection;
 import java.util.HashMap;

@@ -60,7 +60,7 @@ public class Resource extends BaseEntity {
      */
     private String tips;
     /**
-     * 菜单状态 :  open:启用   close:不启用
+     * 菜单 : 启用 ,不启用
      */
     private boolean available;
 
@@ -81,8 +81,8 @@ public class Resource extends BaseEntity {
     /**
      * 菜单角色关联
      */
-    @ManyToMany(mappedBy = "rmenus")
-    private List<Role> mroles = new ArrayList<Role>();
+    @ManyToMany(mappedBy = "rresource")
+    private List<Role> rroles = new ArrayList<Role>();
 
     @Override
     public String toString() {
