@@ -15,7 +15,7 @@
  */
 package vip.itlearning.core.support.exception;
 
-import com.stylefeng.guns.core.support.StrKit;
+import vip.itlearning.core.support.StrKit;
 
 /**
  * 工具类初始化异常

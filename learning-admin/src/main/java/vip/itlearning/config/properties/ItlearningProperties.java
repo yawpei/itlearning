@@ -3,20 +3,17 @@ package vip.itlearning.config.properties;
 import lombok.Getter;
 import lombok.Setter;
 import org.springframework.boot.context.properties.ConfigurationProperties;
+import org.springframework.context.annotation.Configuration;
 import org.springframework.stereotype.Component;
 
 import java.io.File;
+import java.util.HashMap;
+import java.util.Map;
 
 import static vip.itlearning.core.utils.ToolUtil.getTempPath;
 import static vip.itlearning.core.utils.ToolUtil.isEmpty;
 
 
-/**
- * guns项目配置
- *
- * @author yaw
- * @Date 2017/5/23 22:31
- */
 /**
   * @author: yaw
   * @description:  项目配置
@@ -28,6 +25,7 @@ import static vip.itlearning.core.utils.ToolUtil.isEmpty;
 @ConfigurationProperties(prefix = "itlearning")
 public class ItlearningProperties {
 
+    private String artifactId ;
     private Boolean kaptchaOpen = false;
 
     private Boolean swaggerOpen = false;

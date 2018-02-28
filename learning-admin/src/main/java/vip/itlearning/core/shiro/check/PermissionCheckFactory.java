@@ -15,15 +15,15 @@
  */
 package vip.itlearning.core.shiro.check;
 
-import com.stylefeng.guns.core.listener.ConfigListener;
-import com.stylefeng.guns.core.shiro.ShiroKit;
-import com.stylefeng.guns.core.shiro.ShiroUser;
-import com.stylefeng.guns.core.support.CollectionKit;
-import com.stylefeng.guns.core.support.HttpKit;
-import com.stylefeng.guns.core.util.SpringContextHolder;
 import org.springframework.context.annotation.DependsOn;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import vip.itlearning.core.shiro.ShiroKit;
+import vip.itlearning.core.shiro.ShiroUser;
+import vip.itlearning.core.support.CollectionKit;
+import vip.itlearning.core.support.HttpKit;
+import vip.itlearning.core.utils.SpringContextHolder;
+import vip.itlearning.listener.ConfigListener;
 
 import javax.servlet.http.HttpServletRequest;
 

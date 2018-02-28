@@ -15,7 +15,7 @@
  */
 package vip.itlearning.core.shiro.check;
 
-import com.stylefeng.guns.core.util.SpringContextHolder;
+import vip.itlearning.core.utils.SpringContextHolder;
 
 /**
  * 权限检查工厂
