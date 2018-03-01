@@ -47,14 +47,6 @@ public class UserController extends BaseController{
         return PageResult.success(users);
     }
 
-    @PostMapping("create")
-    public Result<Void> createUser(@RequestBody @NotNull User user){
-
-        User user1 = userRepo.save(user);
-        Result<Void> result = new Result<>();
-        return Result.success();
-    }
-
     /**
      * 添加管理员
      */
@@ -62,7 +54,7 @@ public class UserController extends BaseController{
 //    @BussinessLog(value = "添加管理员", key = "account", dict = UserDict.class)
 //    @Permission(Const.ADMIN_NAME)
     @ResponseBody
-    public Tip add(@RequestBody @Valid UserDto user, BindingResult result) {
+    public Result<Void>  add(@RequestBody @Valid UserDto user, BindingResult result) {
         if (result.hasErrors()) {
             throw new ItlearningException(BizExceptionEnum.REQUEST_NULL);
         }
@@ -79,6 +71,6 @@ public class UserController extends BaseController{
         user.setStatus(Status.OK);
 
         this.userRepo.save(UserConverter.createUser(user));
-        return SUCCESS_TIP;
+        return Result.success();
     }
 }
