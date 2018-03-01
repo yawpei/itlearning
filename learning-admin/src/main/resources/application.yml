@@ -108,8 +108,9 @@ itlearning:
     url: jdbc:mysql://127.0.0.1:3306/guns_flowable?autoReconnect=true&useUnicode=true&characterEncoding=utf8&zeroDateTimeBehavior=convertToNull&useSSL=false
     username: root
     password: 123456
+
 #shiro拦截配置
-shiroFilter:
+shiro:
     filterChainDefinitionMap:
         /static/**: anon
         /login: anon

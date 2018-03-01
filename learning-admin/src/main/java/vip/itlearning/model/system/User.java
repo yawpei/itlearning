@@ -89,6 +89,6 @@ public class User extends BaseEntity {
      * @return
      */
     public String getCredentialsSalt(){
-        return this.username+this.salt;
+        return this.salt;
     }
 }

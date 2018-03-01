@@ -47,7 +47,7 @@ public class ShiroKit {
      *
      * @param credentials 密码
      * @param saltSource 密码盐
-     * @return
+     * @return 密文
      */
     public static String md5(String credentials, String saltSource) {
         ByteSource salt = new Md5Hash(saltSource);

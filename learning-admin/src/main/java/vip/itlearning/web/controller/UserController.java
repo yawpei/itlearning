@@ -58,11 +58,11 @@ public class UserController extends BaseController{
     /**
      * 添加管理员
      */
-    @RequestMapping("/add")
+    @RequestMapping(value = "/add",method = RequestMethod.POST)
 //    @BussinessLog(value = "添加管理员", key = "account", dict = UserDict.class)
 //    @Permission(Const.ADMIN_NAME)
     @ResponseBody
-    public Tip add(@Valid UserDto user, BindingResult result) {
+    public Tip add(@RequestBody @Valid UserDto user, BindingResult result) {
         if (result.hasErrors()) {
             throw new ItlearningException(BizExceptionEnum.REQUEST_NULL);
         }
@@ -77,7 +77,6 @@ public class UserController extends BaseController{
         user.setSalt(ShiroKit.getRandomSalt(5));
         user.setPassword(ShiroKit.md5(user.getPassword(), user.getSalt()));
         user.setStatus(Status.OK);
-        user.setCreatetime(new Date());
 
         this.userRepo.save(UserConverter.createUser(user));
         return SUCCESS_TIP;

@@ -21,6 +21,7 @@ import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.cache.ehcache.EhCacheManagerFactoryBean;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.support.PropertySourcesPlaceholderConfigurer;
 import vip.itlearning.config.properties.ItlearningProperties;
 import vip.itlearning.config.shiro.MyShiroRealm;
 
@@ -33,10 +34,23 @@ import java.util.Map;
  * @Date: 2018/2/7
  **/
 @Configuration
-@ConfigurationProperties(prefix = "shiroFilter")
+@ConfigurationProperties(prefix = "shiro")
 public class ShiroConfig {
 
     private Map filterChainDefinitionMap = new LinkedHashMap();
+
+    public Map getFilterChainDefinitionMap() {
+        return filterChainDefinitionMap;
+    }
+
+    public void setFilterChainDefinitionMap(Map filterChainDefinitionMap) {
+        this.filterChainDefinitionMap = filterChainDefinitionMap;
+    }
+
+    @Bean
+    public static PropertySourcesPlaceholderConfigurer propertySourcesPlaceholderConfigurer() {
+        return new PropertySourcesPlaceholderConfigurer();
+    }
 
     /**
      * 安全管理器
@@ -152,6 +166,7 @@ public class ShiroConfig {
 //        filterChainDefinitionMap.put("/logout", "logout");
 //        //过滤链定义，一般将/**放在最为下边
 //        filterChainDefinitionMap.put("/**", "anon");
+
         shiroFilterFactoryBean.setFilterChainDefinitionMap(filterChainDefinitionMap);
         return shiroFilterFactoryBean;
     }
@@ -173,7 +188,7 @@ public class ShiroConfig {
      * 在实现了Destroyable接口的Shiro bean销毁时调用 Destroyable接口回调(例如:DefaultSecurityManager)
      */
     @Bean
-    public LifecycleBeanPostProcessor lifecycleBeanPostProcessor() {
+    public static LifecycleBeanPostProcessor lifecycleBeanPostProcessor() {
         return new LifecycleBeanPostProcessor();
     }
 
@@ -206,11 +221,4 @@ public class ShiroConfig {
 		return r;
 	}*/
 
-    public Map getFilterChainDefinitionMap() {
-        return filterChainDefinitionMap;
-    }
-
-    public void setFilterChainDefinitionMap(Map filterChainDefinitionMap) {
-        this.filterChainDefinitionMap = filterChainDefinitionMap;
-    }
 }
