@@ -14,15 +14,17 @@ import vip.itlearning.core.support.HttpKit;
 
 import java.util.List;
 
+/**
+ * 登录控制器
+ *
+ * @author: yaw
+ * @date: 2018/3/2
+ **/
 @Controller
-public class HomeController1 {
+public class LoginController {
 
     @Autowired
     private ItlearningProperties itlearningProperties;
-  /*  @RequestMapping({"/","/index"})
-    public String index(){
-        return"/index";
-    }*/
 
     /**
      * 跳转到主页
@@ -35,7 +37,7 @@ public class HomeController1 {
         if (roleList == null || roleList.size() == 0) {
             ShiroKit.getSubject().logout();
             model.addAttribute("tips", "该用户没有角色，无法登陆");
-            return "/login";
+            return "/login.html";
         }
 //        List<MenuNode> menus = menuDao.getMenusByRoleIds(roleList);
 //        List<MenuNode> titles = MenuNode.buildTitle(menus);
@@ -49,7 +51,7 @@ public class HomeController1 {
 //        String avatar = user.getAvatar();
 //        model.addAttribute("avatar", avatar);
 
-        return "/index";
+        return "/index.html";
     }
 
     /**
@@ -60,7 +62,7 @@ public class HomeController1 {
         if (ShiroKit.isAuthenticated() || ShiroKit.getUser() != null) {
             return "/";
         } else {
-            return "/login";
+            return "/login.html";
         }
     }
 
@@ -102,7 +104,7 @@ public class HomeController1 {
 
         ShiroKit.getSession().setAttribute("sessionFlag", true);
 
-        return "/index";
+        return "/index.html";
     }
 
     /**
@@ -112,7 +114,7 @@ public class HomeController1 {
     public String logOut() {
 //        LogManager.me().executeLog(LogTaskFactory.exitLog(ShiroKit.getUser().getId(), getIp()));
 //        ShiroKit.getSubject().logout();
-        return "/login";
+        return "/login.html";
     }
 
     @RequestMapping("/403")

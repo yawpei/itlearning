@@ -51,8 +51,6 @@ public class UserController extends BaseController{
      * 添加管理员
      */
     @RequestMapping(value = "/add",method = RequestMethod.POST)
-//    @BussinessLog(value = "添加管理员", key = "account", dict = UserDict.class)
-//    @Permission(Const.ADMIN_NAME)
     @ResponseBody
     public Result<Void>  add(@RequestBody @Valid UserDto user, BindingResult result) {
         if (result.hasErrors()) {

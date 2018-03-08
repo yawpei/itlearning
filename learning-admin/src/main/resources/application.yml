@@ -21,12 +21,12 @@ server:
   context-path: /
 
 ####################  beetl配置  ###################
-#beetl:
-#  delimiter-statement-start: \@   #开始结束标签(yaml不允许@开头)
-#  delimiter-statement-end: null
-#  resource-tagroot: common/tags   #自定义标签文件Root目录和后缀
-#  resource-tagsuffix: tag
-#  resource-auto-check: true #是否检测文件变化,开发用true合适，但线上要改为false
+beetl:
+  delimiter-statement-start: \@   #开始结束标签(yaml不允许@开头)
+  delimiter-statement-end: null
+  resource-tagroot: common/tags   #自定义标签文件Root目录和后缀
+  resource-tagsuffix: tag
+  resource-auto-check: true #是否检测文件变化,开发用true合适，但线上要改为false
 
 
 ###################  spring配置  ###################
@@ -37,10 +37,10 @@ spring:
 #    password:
   profiles:
     active: dev
-#  thymeleaf:
-#    prefix: classpath:/templates/
-#    cache: false
-#    mode: LEGACYHTML5
+  mvc:
+    static-path-pattern: /static/**
+    view:
+      prefix: /WEB-INF/view
   http:
     converters:
       preferred-json-mapper: fastjson
@@ -115,7 +115,7 @@ shiro:
         /static/**: anon
         /login: anon
         /logout: logout
-        /**: anon
+        /**: authc
 
 
 logging:
