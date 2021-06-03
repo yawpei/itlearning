@@ -5,8 +5,13 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>vip.itlearning</groupId>
-    <artifactId>itlearning-core</artifactId>
+    <artifactId>itlearning-project</artifactId>
+    <packaging>pom</packaging>
     <version>1.0-SNAPSHOT</version>
+    <modules>
+        <module>learning-admin</module>
+        <module>learning-common</module>
+    </modules>
 
 
 </project>
