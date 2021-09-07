@@ -1,4 +1,4 @@
-package vip.itlearning.common.utils;
+package vip.itlearning.common.redis.utils;
 
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Component;
